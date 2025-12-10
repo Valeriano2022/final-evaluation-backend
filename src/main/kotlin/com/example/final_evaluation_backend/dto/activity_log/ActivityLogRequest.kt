@@ -5,7 +5,6 @@ import java.time.LocalTime
 
 
 data class ActivityLogRequest(
-    val studentId: Long,
     val activityTypeId: Long,
     val title: String? = null,
     val description: String,
