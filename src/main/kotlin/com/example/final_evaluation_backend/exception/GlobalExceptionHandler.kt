@@ -37,6 +37,8 @@ class GlobalExceptionHandler {
             : ResponseEntity<ErrorResponse> {
 
         val message = ex.bindingResult.fieldErrors.joinToString(", ") { "${it.field}: ${it.defaultMessage}" }
+        
+        println(ex)
 
         return ResponseEntity.status(400).body(
             ErrorResponse(
