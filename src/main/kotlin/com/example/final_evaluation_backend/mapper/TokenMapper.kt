@@ -1,6 +1,6 @@
-package com.example.shopping_api.mapper
+package com.example.final_evaluation_backend.mapper
 
-import com.example.shopping_api.dto.auth.TokenResponse
+import com.example.final_evaluation_backend.dto.auth.TokenResponse
 import org.springframework.stereotype.Component
 
 @Component
