@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*
 class ActivityLogControllerImpl(
     private val activityLogService: ActivityLogService
 ) : ActivityLogController {
-
+    @PostMapping
     override fun create(
         authentication: Authentication,
         @RequestBody request: ActivityLogRequest
@@ -29,7 +29,7 @@ class ActivityLogControllerImpl(
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response)
     }
-
+    @PutMapping("/{id}")
     override fun update(
         authentication: Authentication,
         @PathVariable id: Long,
@@ -43,7 +43,7 @@ class ActivityLogControllerImpl(
 
         return ResponseEntity.ok(response)
     }
-
+    @GetMapping("/{id}")
     override fun getById(
         authentication: Authentication,
         @PathVariable id: Long
@@ -56,7 +56,7 @@ class ActivityLogControllerImpl(
 
         return ResponseEntity.ok(response)
     }
-
+    @DeleteMapping("/{id}")
     override fun delete(
         authentication: Authentication,
         @PathVariable id: Long
@@ -66,7 +66,7 @@ class ActivityLogControllerImpl(
 
         activityLogService.delete(principal.userId, id)
     }
-
+    @GetMapping
     override fun getLogs(
         authentication: Authentication,
         pageable: Pageable

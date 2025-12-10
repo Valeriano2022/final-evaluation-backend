@@ -8,8 +8,9 @@ import org.springframework.stereotype.Component
 object ActivityTypeMapper {
     fun ActivityType.toResponseDTO(): ActivityTypeResponse =
         ActivityTypeResponse(
-            id = this.id!!,
-            activityName = this.activityName,
-            description = this.description
+            id = this.id,
+            activityName = this.name,
+            description = this.description,
+            createAt = this.createdAt
         )
 }

@@ -10,9 +10,8 @@ object ActivityLogMapper {
     fun ActivityLog.toResponseDTO(): ActivityLogResponse =
         ActivityLogResponse(
             id = this.id,
-            studentId = this.student.id,
-            activityTypeId = this.activityType.id!!,
-            activityTypeName = this.activityType.activityName,
+            activityTypeId = this.activityType.id,
+            activityTypeName = this.activityType.name,
             title = this.title,
             description = this.description,
             durationMinutes = this.durationMinutes,

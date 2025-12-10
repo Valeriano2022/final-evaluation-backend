@@ -1,11 +1,10 @@
 package com.example.final_evaluation_backend.mapper
 
 import com.example.final_evaluation_backend.model.User
-import com.example.shopping_api.dto.auth.LoginResponse
-import com.example.shopping_api.dto.auth.RegisterRequest
-import com.example.shopping_api.dto.auth.RegisterResponse
-import com.example.shopping_api.dto.user.UserResponse
-import com.example.shopping_api.model.User
+import com.example.final_evaluation_backend.dto.auth.LoginResponse
+import com.example.final_evaluation_backend.dto.auth.RegisterRequest
+import com.example.final_evaluation_backend.dto.auth.RegisterResponse
+import com.example.final_evaluation_backend.dto.auth.UserResponse
 import org.springframework.stereotype.Component
 
 @Component
