@@ -1,6 +1,6 @@
 package com.example.final_evaluation_backend.config
 
-import com.example.shopping_api.util.LoggingInterceptor
+import com.example.final_evaluation_backend.utils.LoggingInterceptor
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry

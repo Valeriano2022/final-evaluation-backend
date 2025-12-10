@@ -1,5 +1,6 @@
 package com.example.final_evaluation_backend.config
 
+import com.example.final_evaluation_backend.security.CustomUserPrincipal
 import org.springframework.data.domain.AuditorAware
 import org.springframework.security.authentication.AnonymousAuthenticationToken
 import org.springframework.security.core.context.SecurityContextHolder
