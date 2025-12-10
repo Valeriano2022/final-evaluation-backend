@@ -6,7 +6,7 @@ import jakarta.persistence.*
 @Table(name = "tokens")
 data class RefreshToken(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val id: Long = 0,
 
     @Version
     var version: Long? = null,

@@ -17,7 +17,7 @@ import com.example.final_evaluation_backend.model.RefreshToken
 import com.example.final_evaluation_backend.repository.RefreshTokenRepository
 import com.example.final_evaluation_backend.repository.UserRepository
 import com.example.final_evaluation_backend.security.JwtUtil
-import com.example.shopping_api.mapper.TokenMapper
+import com.example.final_evaluation_backend.mapper.TokenMapper
 import jakarta.servlet.http.Cookie
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse

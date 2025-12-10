@@ -6,10 +6,10 @@ import jakarta.persistence.*
 @Table(name = "activity_types")
 data class ActivityType(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val id: Long = 0,
 
     @Column(name = "activity_name")
-    var activityName: String,
+    var name: String,
 
     @Column(nullable = true)
     var description: String? = null,

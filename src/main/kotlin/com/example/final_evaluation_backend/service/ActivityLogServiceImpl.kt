@@ -12,14 +12,18 @@ import com.example.final_evaluation_backend.repository.ActivityTypeRepository
 import com.example.final_evaluation_backend.repository.UserRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDate
 import java.time.LocalDateTime
 
+@Service
 class ActivityLogServiceImpl(
     private val activityLogRepository: ActivityLogRepository,
     private val userRepository: UserRepository,
     private val activityTypeRepository: ActivityTypeRepository,
 ) : ActivityLogService {
+    @Transactional(rollbackFor = [Exception::class])
     override fun create(
         userId: Long,
         request: ActivityLogRequest
@@ -32,7 +36,7 @@ class ActivityLogServiceImpl(
             .toEntity(user, activityType, request))
             .toResponseDTO()
     }
-
+    @Transactional(rollbackFor = [Exception::class])
     override fun update(userId: Long, id: Long, request: ActivityLogRequest): ActivityLogResponse {
         val user = validateUser(userId)
         val log = activityLogRepository.findById(id)
@@ -71,7 +75,7 @@ class ActivityLogServiceImpl(
 
         return entity.toResponseDTO()
     }
-
+    @Transactional(rollbackFor = [Exception::class])
     override fun delete(userId: Long, id: Long) {
         val user = validateUser(userId)
 

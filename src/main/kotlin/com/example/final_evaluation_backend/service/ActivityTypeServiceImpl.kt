@@ -8,27 +8,28 @@ import com.example.final_evaluation_backend.exception.InvalidRequestException
 import com.example.final_evaluation_backend.mapper.ActivityTypeMapper.toResponseDTO
 import com.example.final_evaluation_backend.model.ActivityType
 import com.example.final_evaluation_backend.repository.ActivityTypeRepository
-import org.springframework.data.domain.Page
-import org.springframework.data.domain.Pageable
+import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
+@Service
 class ActivityTypeServiceImpl(
     private val activityTypeRepository: ActivityTypeRepository
 ): ActivityTypeService {
-
+    @Transactional(rollbackFor = [Exception::class])
     override fun create(userId: Long, request: ActivityTypeRequest): ActivityTypeResponse {
         if (activityTypeRepository.existsByNameIgnoreCase(request.activityName)) {
             throw ActivityTypeAlreadyExists(request.activityName)
         }
 
         val entity = ActivityType(
-            activityName = request.activityName,
+            name = request.activityName,
             description = request.description
         )
 
         val saved = activityTypeRepository.save(entity)
         return saved.toResponseDTO()
     }
-
+    @Transactional(rollbackFor = [Exception::class])
     override fun update(
         userId: Long,
         id: Long,
@@ -37,13 +38,13 @@ class ActivityTypeServiceImpl(
         val existing = activityTypeRepository.findById(id)
             .orElseThrow { ActivityTypeNotFoundException(id) }
 
-        if (existing.activityName.equals(request.activityName, ignoreCase = true).not() &&
+        if (existing.name.equals(request.activityName, ignoreCase = true).not() &&
             activityTypeRepository.existsByNameIgnoreCase(request.activityName)
         ) {
             throw InvalidRequestException("Activity type '${request.activityName}' already exists.")
         }
 
-        existing.activityName = request.activityName
+        existing.name = request.activityName
         existing.description = request.description
 
         val updated = activityTypeRepository.save(existing)
@@ -61,7 +62,7 @@ class ActivityTypeServiceImpl(
         return activityTypeRepository.findAll()
             .map { it.toResponseDTO() }
     }
-
+    @Transactional(rollbackFor = [Exception::class])
     override fun delete(userId: Long, id: Long) {
         if (!activityTypeRepository.existsById(id)) {
             throw ActivityTypeNotFoundException(id)

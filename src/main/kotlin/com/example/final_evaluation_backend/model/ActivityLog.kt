@@ -2,7 +2,6 @@ package com.example.final_evaluation_backend.model
 
 import jakarta.persistence.*
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.LocalTime
 
 @Entity
